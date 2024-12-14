@@ -19,13 +19,13 @@ const FeaturedProductLayout = () => {
               <img
                 src={Array.isArray(product.src) ? product.src[0] : product.src}
                 alt={product.name}
-                className="lg:w-full lg:h-[25rem] lg:object-cover bg-black"
+                className="lg:w-full lg:h-[25rem] lg:object-cover"
               />
               {Array.isArray(product.src) && product.src[1] && (
                 <img
                   src={product.src[1]}
                   alt={`${product.name} Hover`}
-                  className="absolute bg-black inset-0 lg:w-full lg:h-[25rem] lg:object-cover rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  className="absolute inset-0 lg:w-full lg:h-[25rem] lg:object-cover rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   
                 />
               )}
