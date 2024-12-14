@@ -26,12 +26,11 @@ const ProductLayout = () => {
         <div className="flex flex-col text-center">
           <p className="text-3xl font-semibold text-white mb-4">Sale</p>
           <p className="text-3xl font-bold text-white">Up to 60% Off</p>
-          <a
-            href="/shop"
+          <Link to="/shop"
             className="text-sm underline text-white hover:text-gray-300 mt-10"
           >
             VIEW ALL
-          </a>
+          </Link>
         </div>
       </div>
       <div
@@ -41,30 +40,30 @@ const ProductLayout = () => {
       >
         {products.map((product) => (
           <Link
-            to={`/product/${product.id}`}
-            key={product.id}
-            className="group flex-shrink-0 lg:w-[calc(100%/3-1rem)] text-white rounded-lg shadow-lg group relative"
-          >
-            <div className="relative border-2 border-gray-500 rounded-md overflow-hidden">
+          to={`/product/${product.id}`}
+          key={product.id}
+          className="group flex-shrink-0 w-[calc(50%-0.5rem)] lg:w-[calc(100%/3-1rem)] text-white rounded-lg shadow-lg group relative"
+        >
+          <div className="relative border-2 border-gray-500 rounded-md overflow-hidden">
+            <img
+              src={Array.isArray(product.src) ? product.src[0] : product.src}
+              alt={product.name}
+              className="w-full object-cover h-40 md:h-64 lg:h-[100%]"
+            />
+            {Array.isArray(product.src) && product.src[1] && (
               <img
-                src={Array.isArray(product.src) ? product.src[0] : product.src}
-                alt={product.name}
-                className="w-full object-cover h-64 lg:h-[100%]"
+                src={product.src[1]}
+                alt={`${product.name} Hover`}
+                className="absolute inset-0 w-full object-cover h-40 md:h-64 lg:h-[100%] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
-              {Array.isArray(product.src) && product.src[1] && (
-                <img
-                  src={product.src[1]}
-                  alt={`${product.name} Hover`}
-                  className="absolute inset-0 w-full object-cover h-64 lg:h-[100%] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  
-                />
-              )}
-            </div>
-            <div className="p-2 text-left font-semibold">
-              <h3 className="text-sm truncate">{product.name}</h3>
-              <p className="text-sm">{product.price}</p>
-            </div>
-          </Link>
+            )}
+          </div>
+          <div className="p-2 text-left font-semibold">
+            <h3 className="text-sm truncate">{product.name}</h3>
+            <p className="text-sm">{product.price}</p>
+          </div>
+        </Link>
+        
         ))}
       </div>
     </div>
