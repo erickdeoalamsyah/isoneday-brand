@@ -34,38 +34,38 @@ const ProductLayout = () => {
         </div>
       </div>
       <div
-        ref={containerRef}
-        className="flex gap-4 overflow-x-scroll scrollbar-hide px-6"
-        style={{ scrollBehavior: "smooth", width: "100%" }}
-      >
-        {products.map((product) => (
-          <Link
-          to={`/product/${product.id}`}
-          key={product.id}
-          className="group flex-shrink-0 w-[calc(50%-0.5rem)] lg:w-[calc(100%/3-1rem)] text-white rounded-lg shadow-lg group relative"
-        >
-          <div className="relative border-2 border-gray-500 rounded-md overflow-hidden">
-            <img
-              src={Array.isArray(product.src) ? product.src[0] : product.src}
-              alt={product.name}
-              className="w-full object-cover h-40 md:h-64 lg:h-[100%]"
-            />
-            {Array.isArray(product.src) && product.src[1] && (
-              <img
-                src={product.src[1]}
-                alt={`${product.name} Hover`}
-                className="absolute inset-0 w-full object-cover h-40 md:h-64 lg:h-[100%] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-              />
-            )}
-          </div>
-          <div className="p-2 text-left font-semibold">
-            <h3 className="text-sm truncate">{product.name}</h3>
-            <p className="text-sm">{product.price}</p>
-          </div>
-        </Link>
-        
-        ))}
+  ref={containerRef}
+  className="flex gap-4 overflow-x-scroll scrollbar-hide px-6"
+  style={{ scrollBehavior: "smooth", width: "100%" }}
+>
+  {products.map((product) => (
+    <Link
+      to={`/product/${product.id}`}
+      key={product.id}
+      className="group flex-shrink-0 w-[calc(100%-1rem)] sm:w-[calc(50%-1rem)] lg:w-[calc(100%/3-1rem)] text-white rounded-lg shadow-lg relative"
+    >
+      <div className="relative border-2 border-gray-500 rounded-md overflow-hidden">
+        <img
+          src={Array.isArray(product.src) ? product.src[0] : product.src}
+          alt={product.name}
+          className="w-full object-cover h-72 sm:h-64 lg:h-[100%]"
+        />
+        {Array.isArray(product.src) && product.src[1] && (
+          <img
+            src={product.src[1]}
+            alt={`${product.name} Hover`}
+            className="absolute inset-0 w-full object-cover h-72 sm:h-64 lg:h-[100%] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          />
+        )}
       </div>
+      <div className="p-2 text-left font-semibold">
+        <h3 className="text-sm truncate">{product.name}</h3>
+        <p className="text-sm">{product.price}</p>
+      </div>
+    </Link>
+  ))}
+</div>
+
     </div>
   );
 };
