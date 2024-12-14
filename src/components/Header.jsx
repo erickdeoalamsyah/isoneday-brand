@@ -10,7 +10,9 @@ const Header = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const handleScroll = () => {
-    if (window.scrollY > lastScrollY) {
+    if (window.scrollY === 0) {
+      setShowHeader(true);
+    } else if (window.scrollY > lastScrollY) {
       setShowHeader(false);
     } else {
       setShowHeader(true);
@@ -26,7 +28,6 @@ const Header = () => {
   }, [lastScrollY]);
 
   return (
-    
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${
         showHeader ? "translate-y-0" : "-translate-y-full"
